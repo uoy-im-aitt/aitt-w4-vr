@@ -47,3 +47,23 @@ Unfortunately, the current SteamVR implementation doesn't play nicely with Unity
 
 - Define paths of teleport points for when the user explores a terrain area
 - Create a set of planar teleport areas that approximately follows the shape of your terrain (or an allowed path through it)
+
+## Task 3: Extending the Inbuilt Interaction System by Making a Simple Terrain-friendly Teleporter
+
+The inbuilt interaction system we've been exploring so far is great, and supports a lot of the interactions you'll want to implement in your projects. However, sometimes you'll find you'll want to do something that the interaction system doesn't support. In this case, you'll need to implement some custom code. 
+
+In this task, we're going to learn how to implement our own custom interactions within the context of the interaction system. We're going to do it by implementing our own (albeit basic) teleporter. What's cool about the teleporter we're going to make though, is that it works for terrain!
+
+### Stage 1: Creating a new Action
+
+One of the really nice features of the SteamVR interaction system is that its input system is based on abstract "Actions" that are not tied to any specific controller or device. This means that as a designer of a VR environment you can think on terms of the abstract things that the user does or can do (e.g. "Grab", "Jump", "Shoot", "Teleport") rather than specific manipulations that the user performs on the controller (e.g. "Pull Trigger", "Press Touchpad"). The aim behind this design decision is to allow designers to create experiences that'll work across multiple VR platforms without loads of extra coding.
+
+To learn about Steam's actions, we're going to implement our custom teleporter as a new action. To do this, open up the SteamVR Input window (find it in ```Window > SteamVR Input```).  In the window you'll see a list of ```In``` actions, which include the ```Teleport``` action that we've already been performing in the previous task. Add a new action to this list by pressing the little ```+``` button at the bottom.
+
+A little UI will appear to the right that let's you configure your new action. The first thing to do here is to give your action a name, which you should set as ```offroadteleport```. Next choose, the type of action from the dropdown. The type of action defines the kind of input you'll need from the user to make the action happen. We just want an on/off button press, so we will choose ```Boolean```. Finally, put the name of your action in the ```Localized String``` box as well. When you've done this, press the ```Save and generate``` button, which will create the code for your new action.
+
+Finally, we need to setup a controller binding that'll tell Unity which button on the Vive handsets will trigger our action. To do this, press the ```Open Binding UI```. A webpage will pop-up that let's you assign controls to the different actions in your experience. For example, you'll see that the Trackpad is already configured to initiate the ```Teleport``` action when the trackpad is pressed.
+
+To complete this sub-task, see if you can change the binding for the trackpad button so that it initiates your ```offroadteleport``` action rather than ```Teleport``` when pressed.
+
+
