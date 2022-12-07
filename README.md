@@ -12,7 +12,7 @@ We’ll be using Valve’s SteamVR Unity plugin to prototype for HTC Vive in thi
 
 > **Note** As you're working as a group, you might want to push your code to multiple personal git repos at the end of the practical so you all have a copy. If you'd like to know how to do this, just ask one of the teaching staff and we'll show you.
 
-Once you've opened the project, open up the ```Island Scene``` in the ```Scenes``` folder. You'll see a pop-up asking you to confirm some settings. Click ```Accept All```. Next, run the scene. You should find yourself in VR on the island! You should be able to look around and see two gloved hands where the controllers are held.
+Once you've opened the project, open up the ```Island``` Scene in the ```Practical Assets``` folder. You'll see a pop-up asking you to confirm some settings. Click ```Accept All```. Next, run the scene. You should find yourself in VR on the island! You should be able to look around and see two gloved hands where the controllers are held.
 
 > ***Warning*** If the scene doesn't run, you might need to open the SteamVR Input Window (found under ```Window > SteamVRInput``` in the menu) and press the ```Save and Generate``` button. 
 
@@ -124,7 +124,7 @@ One you’ve got your basic teleporter working, you may wish to improve it by:
 
 ### Task 4: More Realistic Spatial Audio
 
-In the lecture we learned how realistic spatial audio could be created for VR by simulating the cues that the human mind uses to work out the direction and distance a sound is away from a listener. A standard AudioSource in Unity only simulates two of these cues: i) changes in level caused by distance and ii) inter-aural level differences. To experience the effect of these audio cues, open the ```Audio Experiment``` scene, add a Players pre-fab to the centre of the floor and listen to how the sound changes you move your head.
+In the lecture we learned how realistic spatial audio could be created for VR by simulating the cues that the human mind uses to work out the direction and distance a sound is away from a listener. A standard AudioSource in Unity only simulates two of these cues: i) changes in level caused by distance and ii) inter-aural level differences. To experience the effect of these audio cues, open the ```Audio Experiment``` scene, add a Player pre-fab (found in ```SteamVR/InteractionSystem/Core/Prefabs``` to the centre of the floor and listen to how the sound changes you move your head.
 
 Could you accurately determine the direction that sound is coming from the cues? The answer should be ‘not always’. As we saw in the lecture, the two cues Unity uses for its standard 3D sound are not sufficient to allow humans to properly work out the direction of an audio source. This is because it’s not possible for the brain to work out whether a sound is in front or behind us from inter-aural level differences alone. In order to solve this problem, we need to use a Head Related Transfer Function (HRTF) in order to simulate the changes in the frequency spectrum of a sound – which are caused by the body, head and ears of the listener when facing in different directions. Unity provides an audio spatializer plugin (as part of its Oculus Rift integration) that we can use to get this functionality in our VR scenes. We can turn on the spatializer for any audio source by following two steps:
 
