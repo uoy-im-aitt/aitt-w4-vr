@@ -97,4 +97,47 @@ Using the code above, see if you can make the print statements appear when you p
 
 > **Note** having your teleporter only work for one hand will make the code in the next section much simpler, so just stick with listening for actions on either the left or right hand for now. However, if you'd like to make code that's generic across both controllers, explore basing the parameter passed to ```GetStateDown/Up``` a public variable of type ```SteamVR_Input_Sources```. If you do this, you'll see something cool about how Unity handles public variables that are enumerations (i.e. variables that have a fixed set of possible values).
 
+### Stage 3: Implementing an actual teleporter
 
+So far, we're just printing stuff out. No one is teleporting anywhere. In the final task, we're going to build on the code in our script to implement "terrain-friendly" / "off road" teleporting.
+
+You can implement the actual teleport interaction with the help of Unity’s ```Physics.Raycast``` function (http://bit.ly/2b8FoSP). Recall from last year, this function draws an imaginary line through a scene and returns true if it intersects an object. It also populates a RaycastHit object with information about the object that the ray has intersected with and the intersection point. For example, here you can see how to use the method to cast an imaginary directly forward from the position of a game object and print out the intersection point.
+
+```c#
+Ray raycast = new Ray(transform.position, transform.forward);
+RaycastHit hit;
+
+bool bHit = Physics.Raycast(raycast, out hit);
+if (bHit)
+{
+  print(hit.point);
+}
+```
+
+Once you’ve found the position that the player is pointing at, you can simply teleport them there by setting the position of the ```Player``` game object to the intersection point. You can find out the intersection point from the ```point``` parameter of the ```hit``` variable, as shown above. You should use the ```LineRenderer``` component to draw the laser pointer (http://bit.ly/2aU5FAY).
+
+One you’ve got your basic teleporter working, you may wish to improve it by:
+
+- Setting a maximum teleportation distance
+- Changing the color of the line when it is not intersecting any objects
+- Rendering an object at the point of intersection, to make it more visible to the user
+
+### Task 4: More Realistic Spatial Audio
+
+In the lecture we learned how realistic spatial audio could be created for VR by simulating the cues that the human mind uses to work out the direction and distance a sound is away from a listener. A standard AudioSource in Unity only simulates two of these cues: i) changes in level caused by distance and ii) inter-aural level differences. To experience the effect of these audio cues, open the ```Audio Experiment``` scene, add a Players pre-fab to the centre of the floor and listen to how the sound changes you move your head.
+
+Could you accurately determine the direction that sound is coming from the cues? The answer should be ‘not always’. As we saw in the lecture, the two cues Unity uses for its standard 3D sound are not sufficient to allow humans to properly work out the direction of an audio source. This is because it’s not possible for the brain to work out whether a sound is in front or behind us from inter-aural level differences alone. In order to solve this problem, we need to use a Head Related Transfer Function (HRTF) in order to simulate the changes in the frequency spectrum of a sound – which are caused by the body, head and ears of the listener when facing in different directions. Unity provides an audio spatializer plugin (as part of its Oculus Rift integration) that we can use to get this functionality in our VR scenes. We can turn on the spatializer for any audio source by following two steps:
+
+1. Open the package manager ```Windows > Package Manager```
+2. Select the “Oculus XR Plugin” in the list of packages, and click ```Install```
+3. Enable the plugin by selecting ```OculusSpatializer``` from the ```Spatializer Plugin``` drop down menu in your project’s Audio settings ```Edit > Project Settings > Audio```)
+4.	Select the ```Spatialize``` checkbox for any audio sources that you want to use the plugin with (tip: its right at the bottom)
+
+Follow these instructions to enable spatialized audio for the ```AudioSource``` attached to the ```Speaker``` game object. Listen to the differences between the audio spatialization when the ```Spatialize``` checkbox is enabled or disabled. You may wish to have a team member tick and un-tick the box while another member listens, to see if you can tell which is which.
+
+### Optional Extensions
+
+If you complete all of the above tasks before the end of the practical, or would like to continue to develop your skills in your free study time, then you should consider experimenting with some of the following tasks:
+
+- Create a simple VR racing game using one of Unity’s inbuilt racing cars (or adapt the one from the cameras practical in MPIE last year). Investigate whether adding a visible cockpit to the camera view changes the likelihood of the player becoming nauseous.
+- Use Unity’s third person character controller pre-fab (in the standard character assets package) to implement the "Ghosting” locomotion technique that was described in the lecture.
