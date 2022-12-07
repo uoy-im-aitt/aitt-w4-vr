@@ -66,4 +66,35 @@ Finally, we need to setup a controller binding that'll tell Unity which button o
 
 To complete this sub-task, see if you can change the binding for the trackpad button so that it initiates your ```offroadteleport``` action rather than ```Teleport``` when pressed.
 
+### Stage 2: Coding a custom action
+
+Now we've set up all the complicated stuff behind the scenes, let's actually code our teleporter script. Your script should provide the following functionality:
+
+1. Draw a ‘laser pointer’ line forwards from the controller when the touchpad is pressed & held by the user
+2. When this line intersects a game object (i.e. the terrain) and the user releases the touchpad, they should be teleported (i.e. moved) to the position of the intersection
+
+To make this work, you'll need to use a few new bits of code. Firstly, you'll need to import the code library that let's you access info on SteamVR's actions into your script. You can do this by adding the following import statement to the top of your script:
+
+```c#
+using Valve.VR;
+```
+
+You'll now be able to call functions that'll tell you about the state of the different actions in your experience. For example, the code below will let you find out when the trackpad is pressed and when it isn't:
+
+```c#
+if(SteamVR_Input.GetStateDown("offroadteleport", SteamVR_Input_Sources.LeftHand))
+{
+  print("Fire out the teleport line");
+}
+
+if (SteamVR_Input.GetStateUp("offroadteleport", SteamVR_Input_Sources.LeftHand))
+{
+  print("Teleport to the intersection point");
+}
+```
+
+Using the code above, see if you can make the print statements appear when you press the trackpad on either of the controllers. Once you've got this working, look at the code. Discuss in your group what each bit does. Can you work out how to make your teleporter only work for the right hand or both hands?
+
+> **Tip** having your teleporter only work for one hand will make the code in the next section much simpler, so just stick with listening for actions on either the left or right hand for now. However, if you'd like to make code that's generic across both controllers, explore basing the parameter passed to GetStateDown/Up a public variable of "type SteamVR_Input_Sources". If you do this, you'll see something cool about how Unity handles public variables that are enumerations (i.e. variables that have a fixed set of possible values).
+
 
