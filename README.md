@@ -33,4 +33,17 @@ You can define a set of positions on the map that your users are allowed to tele
 
 If your teleporter can't reach the points, you can adjust the ```Arc Distance``` variable in the Teleport game object. However, be careful about making the distance too big, as aiming a long teleport arc gets difficult.
 
+### Approach 2: Teleport Area
 
+Sometimes you just want your player to be able to roam freely around your level, or at least a part of it. In order to do this, you can create a piece of geometry, such as a simple plane that overlays the floor of your level, and define it as a ```Teleport Area```. To do this, you simply:
+
+1. Add a new Plane to your scene ```GameObject > 3D Object > Plane```
+2. Position it in the location where you'd like the user to be able to teleport around
+3. Add the ```TeleportArea``` prefab to it, which can be found in ```SteamVR/InteractionSystem/Teleport/Scripts```
+
+Have a going at doing this, by creating a teleport area that lets the user explore the concrete platform.
+
+Unfortunately, the current SteamVR implementation doesn't play nicely with Unity's inbuilt terrain. That's to say, you can't just stick a TeleportArea on your terrain and go exploring. Therefore, if you want to use the inbuilt teleporter with terrain you've got two options:
+
+- Define paths of teleport points for when the user explores a terrain area
+- Create a set of planar teleport areas that approximately follows the shape of your terrain (or an allowed path through it)
