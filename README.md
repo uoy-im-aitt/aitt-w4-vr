@@ -21,4 +21,10 @@ Once you’ve all had a go in your first VR experience, leave the matrix and loo
 - Make a floating sphere appear in the center of the user’s vision, no matter what direction they look
 - Make a red cube appear in the user’s left hand and a blue cube in their right hand
 
+## Task 2: Using Steam's Inbuilt Teleporter
 
+As teleporting is such a common interaction in VR these days, SteamVR includes a really nice implementation that you can use in your scenes. To get started with teleporting in your scene all you need to do is drag the "Teleporting" prefab into the root of your scene's hierarchy. You can find it in the ```/Assets/SteamVR/InteractionSystem/Teleporting/Prefabs``` folder within the project.
+
+Once you've added the teleporting prefab into the scene, you should be able to attempt to teleport by pressing the touchpad on the top of the controller. However, you'll notice that you can't yet teleport anywhere. This is because we need to tell Unity where you're allowed to teleport (where people are allowed to go is, of course, an important thing you want to control as a designer!). SteamVR let's us define where people can teleport in two ways.
+
+### Approach 1: Teleport Points
