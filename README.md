@@ -28,3 +28,9 @@ As teleporting is such a common interaction in VR these days, SteamVR includes a
 Once you've added the teleporting prefab into the scene, you should be able to attempt to teleport by pressing the touchpad on the top of the controller. However, you'll notice that you can't yet teleport anywhere. This is because we need to tell Unity where you're allowed to teleport (where people are allowed to go is, of course, an important thing you want to control as a designer!). SteamVR let's us define where people can teleport in two ways.
 
 ### Approach 1: Teleport Points
+
+You can define a set of positions on the map that your users are allowed to teleport to. To do this, you simply add a set of ```TeleportPoint``` prefabs to the scene. You can find these in the same folder that the Teleporter prefab was in. In your group, see if you can create a path of teleport points that lets your player navigate to the concrete platform that protrudes from one of the hills on the island.
+
+If your teleporter can't reach the points, you can adjust the ```Arc Distance``` variable in the Teleport game object. However, be careful about making the distance too big, as aiming a long teleport arc gets difficult.
+
+
