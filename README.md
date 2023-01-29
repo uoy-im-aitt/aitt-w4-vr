@@ -8,7 +8,7 @@ You should work in groups of 2 around the VR PCs. When deploying your VR experie
 
 ## Task 1: Your First Virtual Reality Project in Unity
 
-We’ll be using Valve’s SteamVR Unity plugin to prototype for HTC Vive in this course. To help you get stared quickly, I've created a template project with everything installed and set up. You can access this project by making a copy of this repository in your personal git account by pressing the ```Use This Template``` button at the top right of this page, and then cloning your personal version of the respository onto the machine you're working on.
+We’ll be using Valve’s SteamVR Unity plugin to prototype for HTC Vive in this course. To help you get stared quickly, I've created a template project with everything installed and set up. You can access this project by making a copy of this repository in your personal git account by pressing the ```Use This Template``` button at the top right of this page, and then cloning your personal version of the respository onto the machine you're working on. If you're working in the Immersive Lab, then you should check your project out into a sub-directory of ```C:\Temp```. If you try and check it out to the default location (your H:\ drive) it'll be too slow.
 
 > **Note** As you're working as a group, you might want to push your code to multiple personal git repos at the end of the practical so you all have a copy. If you'd like to know how to do this, just ask one of the teaching staff and we'll show you.
 
