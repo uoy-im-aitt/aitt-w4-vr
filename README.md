@@ -4,7 +4,11 @@ In the lecture, we saw how contemporary virtual reality headsets work from a vis
 
 In this practical, we are going to learn how to get started with prototyping VR experiences using the HTC Vive in Unity. We will see how to use Vive's inbuilt implementation of locomotion and, then, learn how both Vive's interaction system works by having a go at implementing our own locomotion techniques from scratch!
 
-You should work in groups of 2 around the VR PCs. When deploying your VR experiences, make sure that another team member ‘spots’ the user to make sure they don’t bump or trip into anything or fellow students. 
+You should work in groups of 2 around the VR PCs. When deploying your VR experiences, make sure that another team member ‘spots’ the user to make sure they don’t bump or trip into anything or fellow students.
+
+Before you start the tasks, you can get VR up and runnning by following these instructions:
+
+https://github.com/uoy-im-aitt/vive-instructions/
 
 ## Task 1: Your First Virtual Reality Project in Unity
 
