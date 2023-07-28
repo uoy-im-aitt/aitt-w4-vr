@@ -1,4 +1,4 @@
-# Practical: Prototyping VR in Unity with the HTC Vive
+# Prototyping VR in Unity with the HTC Vive
 
 In the lecture, we saw how contemporary virtual reality headsets work from a visual and audio perspective. We also saw a number of “locomotion techniques” that allow us to move a player around a virtual world that they are experiencing using VR.
 
